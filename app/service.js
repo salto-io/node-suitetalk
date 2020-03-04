@@ -1,6 +1,7 @@
 "use strict";
 
 const denodeify = require("denodeify");
+const Soap = require("./soap");
 
 /**
  * Check that required parameters are present
@@ -110,19 +111,33 @@ class Service {
     }
 
     /**
+     * Get a list of customization IDs
+     * @param {string} type
+     * @param {boolean} includeInactives
+     * @return {Promise<any>}
+     */
+    getCustomizationId(type, includeInactives = true) {
+        _assertConnection(this);
+        const getCustomizationIdObj = new Soap.GetCustomizationId();
+        getCustomizationIdObj.type = type;
+        getCustomizationIdObj.includeInactives = includeInactives;
+        const soapObj = getCustomizationIdObj.getNode();
+        const getCustomizationId = denodeify(this.config.client.getCustomizationId);
+        return getCustomizationId(soapObj);
+    }
+
+    /**
      * Get a list of records by type
      * @param {string} recordType
      * @return {Promise<any>}
      */
     getAll(recordType) {
         _assertConnection(this);
-        const param = {
-            record: {
-                recordType,
-            },
-        };
+        const getAllObj = new Soap.GetAll();
+        getAllObj.type = recordType;
+        const soapObj = getAllObj.getNode();
         const getAll = denodeify(this.config.client.getAll);
-        return getAll(param);
+        return getAll(soapObj);
     }
 
     /**
