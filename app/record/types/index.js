@@ -15,6 +15,7 @@ const Types = {
     ListOrRecordRef: require("./listOrRecordRef"),
     Opportunity: require("./opportunity"),
     Partner: require("./partner"),
+    Record: require("./common/record"),
     RecordRef: require("./recordRef"),
     SalesOrder: require("./salesOrder"),
     Vendor: require("./vendor"),
