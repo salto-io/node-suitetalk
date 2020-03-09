@@ -60,14 +60,14 @@ class Service {
 
     /**
      * Delete record
-     * @param {Record} record
+     * @param {Reference} recordRef
      * @return {Promise<any>}
      */
-    delete(record) {
+    delete(recordRef) {
         _assertConnection(this);
-        const soapObj = record.getNode();
-        const add = denodeify(this.config.client.add);
-        return add(soapObj);
+        const soapObj = recordRef.getNode();
+        const deleteRecord = denodeify(this.config.client.delete);
+        return deleteRecord(soapObj);
     }
 
     /**
