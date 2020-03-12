@@ -15,16 +15,14 @@ service
         customRecord.typeId = 496;
 
         // Set regular fields
-        const b1 = new Record.Fields.StringRef();
-        b1.field = "name";
-        b1.value = "test7";
+        const b1 = new Record.Fields.Field("string", "name", "test7");
 
         customRecord.bodyFieldList.push(b1);
 
         // Custom fields
         customRecord.customFieldList = new Record.Lists.CustomFieldList();
 
-        const c1 = new Record.Fields.StringCustomFieldRef();
+        const c1 = new Record.Fields.CustomFieldRef("StringCustomFieldRef", "string");
         c1.scriptId = "custrecord_conn_t1";
         c1.value = "this is a test";
 

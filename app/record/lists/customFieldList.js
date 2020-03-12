@@ -10,7 +10,7 @@ class CustomFieldList extends BaseObject {
     }
 
     _getSoapType() {
-        return `${this._type}:customFieldList`;
+        return `${this._familyType}:customFieldList`;
     }
 
     _getAttributes() {

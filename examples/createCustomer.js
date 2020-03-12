@@ -10,20 +10,14 @@ service
     .init()
     .then((/*client*/) => {
 
-        const customerRecord = new Record.Types.Customer();
+        const customerRecord = new Record.Types.Record("listRel", "Customer");
 
         // Set regular fields
-        const b1 = new Record.Fields.BooleanRef();
-        b1.field = "isPerson";
-        b1.value = true;
+        const b1 = new Record.Fields.Field("boolean", "isPerson", true);
 
-        const b2 = new Record.Fields.StringRef();
-        b2.field = "firstName";
-        b2.value = "TESTJohnSample2";
+        const b2 = new Record.Fields.Field("string", "firstName", "TESTJohnSample2");
 
-        const b3 = new Record.Fields.StringRef();
-        b3.field = "lastName";
-        b3.value = "Doe";
+        const b3 = new Record.Fields.Field("string", "lastName", "Doe");
 
         customerRecord.bodyFieldList.push(b1, b2, b3);
 
@@ -34,60 +28,43 @@ service
         // Custom fields
         customerRecord.customFieldList = new Record.Lists.CustomFieldList();
 
-        const c1 = new Record.Fields.StringCustomFieldRef();
+        const c1 = new Record.Fields.CustomFieldRef("StringCustomFieldRef", "string");
         c1.scriptId = "custentity_twitter";
         c1.value = "@test";
 
         customerRecord.customFieldList.customFields.push(c1);
 
         // Create Addressbook List
-        const addressBookList = new Record.Lists.CustomerAddressbookList();
+        const addressBookList = new Record.Lists.List("CustomerAddressbookList", "addressbookList");
         addressBookList.replaceAll = true;
 
         // Create Addressbook
-        const addressBook = new Record.Lists.CustomerAddressbook();
+        const addressBook = new Record.Lists.Line("CustomerAddressbook", "addressbook");
 
         // Addressbook body
-        const a1 = new Record.Fields.BooleanRef();
-        a1.field = "defaultBilling";
-        a1.value = true;
+        const a1 = new Record.Fields.Field("boolean", "defaultBilling", true);
 
-        const a2 = new Record.Fields.BooleanRef();
-        a2.field = "isResidential";
-        a2.value = true;
+        const a2 = new Record.Fields.Field("boolean", "isResidential", true);
 
-        const a3 = new Record.Fields.BooleanRef();
-        a3.field = "defaultShipping";
-        a3.value = true;
+        const a3 = new Record.Fields.Field("boolean", "defaultShipping", true);
 
         addressBook.bodyFieldList.push(a1, a2, a3);
 
         // Addressbook subrecord
-        const address = new Record.Lists.Address();
+        const address = new Record.Lists.SubRecord("listRel", "Address",
+            "addressbookAddress");
 
-        const s1 = new Record.Fields.StringRef();
-        s1.field = "addressee";
-        s1.value = "John Doe";
+        const s1 = new Record.Fields.Field("string", "addressee", "John Doe");
 
-        const s2 = new Record.Fields.StringRef();
-        s2.field = "addr1";
-        s2.value = "11 Fake Rd";
+        const s2 = new Record.Fields.Field("string", "addr1", "11 Fake Rd");
 
-        const s3 = new Record.Fields.StringRef();
-        s3.field = "city";
-        s3.value = "Beverly Hills";
+        const s3 = new Record.Fields.Field("string", "city", "Beverly Hills");
 
-        const s4 = new Record.Fields.StringRef();
-        s4.field = "zip";
-        s4.value = "90210";
+        const s4 = new Record.Fields.Field("string", "zip", "90210");
 
-        const s5 = new Record.Fields.StringRef();
-        s5.field = "state";
-        s5.value = "CA";
+        const s5 = new Record.Fields.Field("string", "state", "CA");
 
-        const s6 = new Record.Fields.StringRef();
-        s6.field = "country";
-        s6.value = "_unitedStates";
+        const s6 = new Record.Fields.Field("string", "country", "_unitedStates");
 
         address.bodyFieldList.push(s1, s2, s3, s4, s5, s6);
 

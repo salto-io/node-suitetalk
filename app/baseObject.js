@@ -3,11 +3,11 @@
 class BaseObject {
 
     /**
-     * _type & _name are used for templating
+     * _familyType & _typeName are used for templating
      */
-    constructor() {
-        this._type = undefined;
-        this._name = undefined;
+    constructor(familyType, typeName) {
+        this._familyType = familyType;
+        this._typeName = typeName;
     }
 
     _getSoapType() {

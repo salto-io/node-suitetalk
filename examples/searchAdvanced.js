@@ -22,31 +22,31 @@ service
         service.setSearchPreferences(searchPreferences);
 
         // Create advanced search
-        const search = new Search.Advanced.LocationSearchAdvanced();
+        const search = new Search.Advanced.SearchAdvanced("listAcct", "LocationSearchAdvanced");
 
         // Add criteria
-        search.criteria = new Search.Advanced.LocationSearchRow();
-        search.criteria.basic = new Search.Advanced.LocationSearchRowBasic();
+        search.criteria = new Search.Advanced.SearchRow("listAcct", "locationSearchRow");
+        search.criteria.basic = new Search.Advanced.SearchRowBasic("listAcct", "locationSearchRowBasic");
 
         // Name contains 'warehouse'
-        const nameStringField = new Search.Fields.SearchStringField();
-        nameStringField.field = "name";
+        const nameStringField = new Search.Fields.SearchField("platformCore", "SearchStringField");
+        nameStringField._name = "name";
         nameStringField.operator = "contains";
         nameStringField.searchValue = "warehouse";
         search.criteria.basic.searchCriteriaFields.push(nameStringField);
 
         // Add columns
-        search.columns = new Search.Advanced.LocationSearchRow();
-        search.columns.basic = new Search.Advanced.LocationSearchRowBasic();
+        search.columns = new Search.Advanced.SearchRow("listAcct", "locationSearchRow");
+        search.columns.basic = new Search.Advanced.SearchRowBasic("listAcct", "locationSearchRowBasic");
 
         // Internal ID column
-        const internalIdSelectColumn = new Search.Fields.SearchColumnSelectField();
-        internalIdSelectColumn.field = "internalId";
+        const internalIdSelectColumn = new Search.Fields.SearchColumn("platformCore", "SearchColumnSelectField");
+        internalIdSelectColumn._name = "internalId";
         search.columns.basic.searchColumnFields.push(internalIdSelectColumn);
 
         // Name column
-        const nameStringColumn = new Search.Fields.SearchColumnStringField();
-        nameStringColumn.field = "name";
+        const nameStringColumn = new Search.Fields.SearchColumn("platformCore", "SearchColumnStringField");
+        nameStringColumn._name = "name";
         search.columns.basic.searchColumnFields.push(nameStringColumn);
 
         return service.search(search);

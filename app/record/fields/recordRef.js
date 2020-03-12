@@ -4,16 +4,16 @@ const BaseObject = require("../../baseObject");
 
 class RecordRef extends BaseObject {
 
-    constructor() {
+    constructor(name) {
         super();
         this.type = undefined;
         this.internalId = undefined;
         this.externalId = undefined;
-        this.field = undefined;
+        this._name = name;
     }
 
     _getSoapType() {
-        return `${this._type}:${this.field}`;
+        return `${this._familyType}:${this._name}`;
     }
 
     _getAttributes() {

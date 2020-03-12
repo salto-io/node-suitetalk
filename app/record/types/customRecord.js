@@ -5,11 +5,9 @@ const Record = require("./common/record");
 class CustomRecord extends Record {
 
     constructor() {
-        super();
+        super("setupCustom", "CustomRecord");
         this.typeId = undefined;
         this._isCustomRecord = true;
-        this._type = "setupCustom";
-        this._name = "CustomRecord";
     }
 }
 

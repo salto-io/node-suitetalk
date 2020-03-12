@@ -4,11 +4,11 @@ const BaseObject = require("../../../baseObject");
 
 class Reference extends BaseObject {
 
-    constructor(reference) {
+    constructor(reference, type, internalId, externalId) {
         super();
-        this.internalId = undefined;
-        this.externalId = undefined;
-        this.type = undefined;
+        this.internalId = internalId;
+        this.externalId = externalId;
+        this.type = type;
         this.name = undefined;
         this._reference = reference;
     }

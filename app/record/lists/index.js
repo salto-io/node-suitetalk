@@ -1,13 +1,11 @@
 "use strict";
 
 const Lists = {
-    Address: require("./address"),
-    CustomerAddressbook: require("./customerAddressbook"),
-    CustomerAddressbookList: require("./customerAddressbookList"),
+    Line: require("./line"),
+    List: require("./list"),
+    SubRecord: require("./subrecord"),
     CustomFieldList: require("./customFieldList"),
     NullFieldList: require("./nullFieldList"),
-    SalesOrderItem: require("./salesOrderItem"),
-    SalesOrderItemList: require("./salesOrderItemList"),
 
 };
 

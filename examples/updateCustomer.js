@@ -10,14 +10,14 @@ service
     .init()
     .then((/*client*/) => {
 
-        const customerRecord = new Record.Types.Customer();
+        const customerRecord = new Record.Types.Record("listRel", "Customer");
 
         customerRecord.internalId = 12437022;
 
         // // Custom fields
         customerRecord.customFieldList = new Record.Lists.CustomFieldList();
 
-        const c1 = new Record.Fields.StringCustomFieldRef();
+        const c1 = new Record.Fields.CustomFieldRef("StringCustomFieldRef", "string");
         c1.scriptId = "custentity_twitter";
         c1.internalId = "1566";
         c1.value = "@test";

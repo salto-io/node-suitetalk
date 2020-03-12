@@ -16,10 +16,10 @@ service
         service.setSearchPreferences(searchPreferences);
 
         // Create basic search
-        const search = new Search.Basic.LocationSearchBasic();
+        const search = new Search.Basic.SearchBasic("platformCommon", "LocationSearchBasic");
 
-        const nameStringField = new Search.Fields.SearchStringField();
-        nameStringField.field = "name";
+        const nameStringField = new Search.Fields.SearchField("platformCore", "SearchStringField");
+        nameStringField._name = "name";
         nameStringField.operator = "contains";
         nameStringField.searchValue = "sweet";
 

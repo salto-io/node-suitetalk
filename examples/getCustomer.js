@@ -9,11 +9,7 @@ const service = new Service(config);
 service
     .init()
     .then((/*client*/) => {
-
-        const recordRef = new Record.Types.RecordRef();
-        recordRef.internalId = 1234567;
-        recordRef.type = "customer";
-
+        const recordRef = new Record.Types.Reference("RecordRef", "customer", 1234567);
         return service.get(recordRef);
     }).then((result) => {
 

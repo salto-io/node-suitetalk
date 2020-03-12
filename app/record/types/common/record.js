@@ -4,8 +4,8 @@ const BaseObject = require("../../../baseObject");
 
 class Record extends BaseObject {
 
-    constructor(type, name) {
-        super();
+    constructor(familyType, typeName) {
+        super(familyType, typeName);
         this.bodyFieldList = [];
         this.lineList = [];
         this.nullFields = undefined;
@@ -13,13 +13,11 @@ class Record extends BaseObject {
         this.externalId = undefined;
         this.internalId = undefined;
         this._isCustomRecord = false;
-        this._type = type;
-        this._name = name;
     }
 
     _getSoapType() {
         //return "record";
-        return `${this._type}:record`;
+        return `${this._familyType}:record`;
     }
 
     _getAttributes() {
@@ -27,7 +25,7 @@ class Record extends BaseObject {
         const attr = {
             "externalId": this.externalId,
             "internalId": this.internalId,
-            "xsi:type": `${this._type}:${this._name}`,
+            "xsi:type": `${this._familyType}:${this._typeName}`,
         };
 
         if (!this.externalId) {
@@ -63,23 +61,23 @@ class Record extends BaseObject {
         }
 
         if (this.typeId) {
-            node[type][`${this._type}:recType`] = {};
-            node[type][`${this._type}:recType`]["$attributes"] = {
+            node[type][`${this._familyType}:recType`] = {};
+            node[type][`${this._familyType}:recType`]["$attributes"] = {
                 internalId: this.typeId,
                 "xsi:type": "platformCore:RecordRef",
             };
         }
 
         this.bodyFieldList.forEach((el) => {
-            if (!el._type) {
-                el._type = this._type;
+            if (!el._familyType) {
+                el._familyType = this._familyType;
             }
             Object.assign(node[type], el.getNode());
         });
 
         this.lineList.forEach((el) => {
-            if (!el._type) {
-                el._type = this._type;
+            if (!el._familyType) {
+                el._familyType = this._familyType;
             }
             Object.assign(node[type], el.getNode());
         });
@@ -89,8 +87,8 @@ class Record extends BaseObject {
         }
 
         if (this.customFieldList) {
-            if (!this.customFieldList._type) {
-                this.customFieldList._type = this._type;
+            if (!this.customFieldList._familyType) {
+                this.customFieldList._familyType = this._familyType;
             }
             Object.assign(node[type], this.customFieldList.getNode());
         }
