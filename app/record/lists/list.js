@@ -6,7 +6,7 @@ class List extends BaseObject {
 
     constructor(typeName, name) {
         super(undefined, typeName);
-        this.replaceAll = false;
+        this.replaceAll = true;
         this.list = [];
         this._name = name;
     }
@@ -33,7 +33,7 @@ class List extends BaseObject {
 
         const node = {};
 
-        node[type] = {};
+        node[type] = [];
 
         if (attributes) {
             node[type]["$attributes"] = attributes;
@@ -43,7 +43,7 @@ class List extends BaseObject {
             if (!el._familyType) {
                 el._familyType = this._familyType;
             }
-            Object.assign(node[type], el.getNode());
+            node[type].push(el.getNode());
         });
 
         return node;
