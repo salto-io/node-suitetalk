@@ -4,8 +4,8 @@ const BaseObject = require("../../baseObject");
 
 class Field extends BaseObject {
 
-    constructor(typeName, name, value) {
-        super(undefined, typeName);
+    constructor(name, value) {
+        super();
         this._name = name;
         this._value = value;
     }
@@ -22,10 +22,6 @@ class Field extends BaseObject {
 
         if (!this._name) {
             throw new Error("Field _name not defined");
-        }
-
-        if (typeof this._value !== this._typeName) {
-            throw new Error(`Invalid type value ${typeof this._value} for field ${this._name}`);
         }
 
         const attributes = this._getAttributes();

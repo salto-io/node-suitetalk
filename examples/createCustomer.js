@@ -13,11 +13,11 @@ service
         const customerRecord = new Record.Types.Record("listRel", "Customer");
 
         // Set regular fields
-        const b1 = new Record.Fields.Field("boolean", "isPerson", true);
+        const b1 = new Record.Fields.Field("isPerson", true);
 
-        const b2 = new Record.Fields.Field("string", "firstName", "TESTJohnSample2");
+        const b2 = new Record.Fields.Field("firstName", "TESTJohnSample2");
 
-        const b3 = new Record.Fields.Field("string", "lastName", "Doe");
+        const b3 = new Record.Fields.Field("lastName", "Doe");
 
         customerRecord.bodyFieldList.push(b1, b2, b3);
 
@@ -42,11 +42,11 @@ service
         const addressBook = new Record.Lists.Line("CustomerAddressbook", "addressbook");
 
         // Addressbook body
-        const a1 = new Record.Fields.Field("boolean", "defaultBilling", true);
+        const a1 = new Record.Fields.Field("defaultBilling", true);
 
-        const a2 = new Record.Fields.Field("boolean", "isResidential", true);
+        const a2 = new Record.Fields.Field("isResidential", true);
 
-        const a3 = new Record.Fields.Field("boolean", "defaultShipping", true);
+        const a3 = new Record.Fields.Field("defaultShipping", true);
 
         addressBook.bodyFieldList.push(a1, a2, a3);
 
@@ -54,17 +54,17 @@ service
         const address = new Record.Lists.SubRecord("listRel", "Address",
             "addressbookAddress");
 
-        const s1 = new Record.Fields.Field("string", "addressee", "John Doe");
+        const s1 = new Record.Fields.Field("addressee", "John Doe");
 
-        const s2 = new Record.Fields.Field("string", "addr1", "11 Fake Rd");
+        const s2 = new Record.Fields.Field("addr1", "11 Fake Rd");
 
-        const s3 = new Record.Fields.Field("string", "city", "Beverly Hills");
+        const s3 = new Record.Fields.Field("city", "Beverly Hills");
 
-        const s4 = new Record.Fields.Field("string", "zip", "90210");
+        const s4 = new Record.Fields.Field("zip", "90210");
 
-        const s5 = new Record.Fields.Field("string", "state", "CA");
+        const s5 = new Record.Fields.Field("state", "CA");
 
-        const s6 = new Record.Fields.Field("string", "country", "_unitedStates");
+        const s6 = new Record.Fields.Field("country", "_unitedStates");
 
         address.bodyFieldList.push(s1, s2, s3, s4, s5, s6);
 

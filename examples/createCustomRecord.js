@@ -15,7 +15,7 @@ service
         customRecord.typeId = 496;
 
         // Set regular fields
-        const b1 = new Record.Fields.Field("string", "name", "test7");
+        const b1 = new Record.Fields.Field("name", "test7");
 
         customRecord.bodyFieldList.push(b1);
 
