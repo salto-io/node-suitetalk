@@ -18,23 +18,23 @@ service
         b0.internalId = 345678;
         b0.type = "customer";
 
-        const b1 = new Record.Fields.Field("orderStatus", "_pendingFulfillment");
+        const b1 = new Record.Fields.PrimitiveField("orderStatus", "_pendingFulfillment");
 
         const b2 = new Record.Fields.RecordRef("location");
         b2.internalId = 999;
 
-        const b3 = new Record.Fields.Field("shippingCost", 0);
+        const b3 = new Record.Fields.PrimitiveField("shippingCost", 0);
 
-        const b4 = new Record.Fields.Field("isTaxable", false);
+        const b4 = new Record.Fields.PrimitiveField("isTaxable", false);
 
         salesOrderRecord.bodyFieldList.push(b0, b1, b2, b3, b4);
 
         // Clear lists
-        salesOrderRecord.nullFieldList = new Record.Lists.NullFieldList();
+        salesOrderRecord.nullFieldList = new Record.Fields.NullFieldList();
         salesOrderRecord.nullFieldList.names.push("salesRep");
 
         // Custom fields
-        salesOrderRecord.customFieldList = new Record.Lists.CustomFieldList();
+        salesOrderRecord.customFieldList = new Record.Fields.CustomFieldList();
 
         const c1 = new Record.Fields.CustomFieldRef("StringCustomFieldRef", "string");
         c1.scriptId = "custbody_number";
@@ -43,47 +43,47 @@ service
         salesOrderRecord.customFieldList.customFields.push(c1);
 
         // Create Item List
-        const salesOrderItemList = new Record.Lists.List("SalesOrderItemList", "itemList");
+        const salesOrderItemList = new Record.Fields.List("SalesOrderItemList", "itemList");
         salesOrderItemList.replaceAll = true;
 
         // Create Item
-        const salesOrderItem1 = new Record.Lists.Line("SalesOrderItem", "item");
+        const salesOrderItem1 = new Record.Fields.Line("SalesOrderItem", "item");
 
         const a1 = new Record.Fields.RecordRef("item");
         a1.type = "account";
         a1.internalId = 99999;
 
-        const a2 = new Record.Fields.Field("quantity", 1);
+        const a2 = new Record.Fields.PrimitiveField("quantity", 1);
 
         const a3 = new Record.Fields.RecordRef("price");
         a3.type = "priceLevel";
         a3.internalId = -1;
 
-        const a4 = new Record.Fields.Field("amount", 99.95);
+        const a4 = new Record.Fields.PrimitiveField("amount", 99.95);
 
-        const a5 = new Record.Fields.Field("rate", 99.95);
+        const a5 = new Record.Fields.PrimitiveField("rate", 99.95);
 
-        const a6 = new Record.Fields.Field("isTaxable", false);
+        const a6 = new Record.Fields.PrimitiveField("isTaxable", false);
 
         salesOrderItem1.bodyFieldList.push(a1, a2, a3, a4, a5, a6);
 
-        const salesOrderItem2 = new Record.Lists.Line("SalesOrderItem", "item");
+        const salesOrderItem2 = new Record.Fields.Line("SalesOrderItem", "item");
 
         const a7 = new Record.Fields.RecordRef("item");
         a7.type = "account";
         a7.internalId = 88888;
 
-        const a8 = new Record.Fields.Field("quantity", 2);
+        const a8 = new Record.Fields.PrimitiveField("quantity", 2);
 
         const a9 = new Record.Fields.RecordRef("price");
         a9.type = "priceLevel";
         a9.internalId = -1;
 
-        const a10 = new Record.Fields.Field("amount", 30.00);
+        const a10 = new Record.Fields.PrimitiveField("amount", 30.00);
 
-        const a11 = new Record.Fields.Field("rate", 15.00);
+        const a11 = new Record.Fields.PrimitiveField("rate", 15.00);
 
-        const a12 = new Record.Fields.Field("isTaxable", false);
+        const a12 = new Record.Fields.PrimitiveField("isTaxable", false);
 
         salesOrderItem2.bodyFieldList.push(a7, a8, a9, a10, a11, a12);
 

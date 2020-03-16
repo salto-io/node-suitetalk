@@ -15,7 +15,7 @@ service
         customerRecord.internalId = 12437022;
 
         // // Custom fields
-        customerRecord.customFieldList = new Record.Lists.CustomFieldList();
+        customerRecord.customFieldList = new Record.Fields.CustomFieldList();
 
         const c1 = new Record.Fields.CustomFieldRef("StringCustomFieldRef", "string");
         c1.scriptId = "custentity_twitter";
@@ -25,7 +25,7 @@ service
         customerRecord.customFieldList.customFields.push(c1);
 
         // // Clear lists
-        customerRecord.nullFieldList = new Record.Lists.NullFieldList();
+        customerRecord.nullFieldList = new Record.Fields.NullFieldList();
         customerRecord.nullFieldList.names.push("salesRep");
         customerRecord.nullFieldList.names.push("custentity_item_restrictions");
 

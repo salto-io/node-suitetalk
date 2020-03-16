@@ -1,8 +1,8 @@
 "use strict";
 
-const BaseObject = require("../../baseObject");
+const Field = require("./field");
 
-class RecordRef extends BaseObject {
+class RecordRef extends Field {
 
     constructor(name) {
         super();

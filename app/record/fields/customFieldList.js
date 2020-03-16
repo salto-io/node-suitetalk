@@ -1,8 +1,8 @@
 "use strict";
 
-const BaseObject = require("../../baseObject");
+const Field = require("./field");
 
-class CustomFieldList extends BaseObject {
+class CustomFieldList extends Field {
 
     constructor() {
         super();

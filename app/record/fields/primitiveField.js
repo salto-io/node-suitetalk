@@ -1,13 +1,13 @@
 "use strict";
 
-const BaseObject = require("../../baseObject");
+const Field = require("./field");
 
-class SubRecord extends BaseObject {
+class PrimitiveField extends Field {
 
-    constructor(familyType, typeName, name) {
-        super(familyType, typeName);
+    constructor(name, value) {
+        super();
         this._name = name;
-        this.bodyFieldList = [];
+        this._value = value;
     }
 
     _getSoapType() {
@@ -20,10 +20,14 @@ class SubRecord extends BaseObject {
 
     getNode() {
 
+        if (!this._name) {
+            throw new Error("Field _name not defined");
+        }
+
         const attributes = this._getAttributes();
         const type = this._getSoapType();
 
-        if(!type){
+        if (!type) {
             throw new Error(`Invalid SOAP type ${type}`);
         }
 
@@ -35,15 +39,10 @@ class SubRecord extends BaseObject {
             node[type]["$attributes"] = attributes;
         }
 
-        this.bodyFieldList.forEach((el) => {
-            if (!el._familyType) {
-                el._familyType = "platformCommon";
-            }
-            Object.assign(node[type], el.getNode());
-        });
+        node[type]["$value"] = this._value;
 
         return node;
     }
 }
 
-module.exports = SubRecord;
+module.exports = PrimitiveField;
